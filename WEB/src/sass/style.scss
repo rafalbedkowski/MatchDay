@@ -1,0 +1,994 @@
+$font-family-roboto: "Roboto";
+$font-family-condensed: "Roboto Condensed";
+$font-family-orbitron: "Orbitron";
+
+$color-black: #000;
+$color-white: #fff;
+$color-lightBlue: #00a4de;
+$color-darkBlue: #007ba6;
+$color-lightPurple: #83236b;
+$color-darkPurple: #640750;
+$color-lightOrange: #ffaa19;
+$color-darkOrange: #d28400;
+$color-lightGreen: #90cf03;
+$color-darkGreen: #6c9b02;
+$color-gold: gold;
+$color-red: red;
+$color-lightGray: #8a8a8a;
+$color-darkGray: #474747;
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Roboto", "Roboto Condensed", "Orbitron", sans-serif;
+  height: 100vh;
+  width: 100%;
+  background-color: $color-black;
+
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: $color-lightGray;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: $color-lightOrange;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: $color-darkOrange;
+  }
+
+  .container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    padding-top: 40px;
+    display: flex;
+    overflow: hidden;
+    box-sizing: border-box;
+    flex-direction: column;
+
+    .head {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      height: 40px;
+      padding: 5px 10px;
+      display: flex;
+      justify-content: flex-end;
+      box-sizing: border-box;
+      z-index: 10;
+      background: linear-gradient(
+        rgba($color-darkPurple, 1),
+        rgba($color-lightPurple, 1),
+        rgba($color-darkPurple, 1)
+      );
+
+      .loginBtn,
+      .editBtn,
+      .getPictureBtn,
+      .logoutBtn {
+        margin-left: 10px;
+        height: 30px;
+        width: 100px;
+        border: none;
+        background-color: $color-lightBlue;
+        box-shadow: inset 0px 3px 10px 1px rgba($color-black, 0.67);
+        color: $color-white;
+        transition: 0.5s;
+
+        &.noDisplay {
+          display: none;
+        }
+
+        &:hover {
+          background-color: $color-lightGreen;
+          cursor: pointer;
+        }
+      }
+    }
+
+    .pitch {
+      position: relative;
+      width: 100%;
+      height: 60%;
+      background-color: $color-darkGreen;
+      box-sizing: border-box;
+      background-image: url("../media/pitch.png");
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+      background-position: center;
+
+      .crest {
+        width: 50px;
+        height: 50px;
+        box-sizing: border-box;
+        position: absolute;
+        top: 8%;
+        left: 3%;
+
+        img {
+          height: 100%;
+          width: 100%;
+        }
+      }
+
+      .match {
+        text-align: center;
+        margin-top: 5px;
+
+        span {
+          color: $color-white;
+          margin: 0 10px;
+        }
+
+        .homeTeam,
+        .guestTeam {
+          color: $color-gold;
+          font-size: 16px;
+          font-weight: 700;
+          background: transparent;
+          border: none;
+          font-family: $font-family-condensed;
+          width: 40%;
+        }
+
+        .homeTeam {
+          text-align: right;
+        }
+
+        .guestTeam {
+          text-align: left;
+        }
+
+        .matchDate,
+        .matchAddress {
+          background: transparent;
+          border: none;
+          text-align: center;
+          color: yellowgreen;
+          font-family: $font-family-orbitron;
+          width: 80%;
+          margin: 0;
+          padding: 0;
+        }
+
+        .matchAddress {
+          color: #00a4de;
+        }
+
+        .matchDate {
+          display: block;
+          margin: 1px auto;
+        }
+      }
+
+      .reserve,
+      .staffMatch {
+        position: absolute;
+        width: 100px;
+        min-height: 100px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: rgba($color-black, 0.5);
+        padding: 5px;
+        font-size: 12px;
+        color: $color-white;
+
+        label {
+          position: absolute;
+          line-height: 15px;
+          font-size: 12px;
+          top: -10px;
+          text-align: center;
+          background: linear-gradient(
+            $color-darkGray,
+            $color-lightGray,
+            $color-darkGray
+          );
+          border-radius: 3px;
+          color: $color-white;
+          text-shadow: 1px 1px $color-lightGray;
+          padding: 0 10px;
+          text-transform: uppercase;
+          font-weight: 500;
+        }
+      }
+
+      .reserve {
+        padding-top: 20px;
+        left: 10px;
+        top: 100px;
+
+        .reservePlayer {
+          height: 25px;
+          left: 0;
+          position: absolute;
+          width: 95%;
+          margin-top: 1px;
+          box-sizing: border-box;
+          display: flex;
+          align-items: center;
+          cursor: pointer;
+          background: linear-gradient(
+            rgba($color-darkBlue, 0.6),
+            rgba($color-lightBlue, 0.6),
+            rgba($color-darkBlue, 0.6)
+          );
+
+          .number {
+            margin-right: 3px;
+            background: linear-gradient(
+              rgba($color-darkOrange, 1),
+              rgba($color-lightOrange, 1),
+              rgba($color-darkOrange, 1)
+            );
+            width: 25px;
+            height: 25px;
+            line-height: 25px;
+            text-align: center;
+            color: $color-black;
+            font-weight: 700;
+          }
+
+          .name {
+            padding-left: 10px;
+          }
+        }
+
+        img {
+          display: none;
+        }
+      }
+
+      .sponsors {
+        position: absolute;
+        bottom: 30px;
+        width: 100%;
+        height: 10%;
+        display: flex;
+        justify-content: center;
+
+        img {
+          height: 100%;
+          width: 100%;
+        }
+      }
+
+      .footer {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 30px;
+        background: linear-gradient(
+          rgba($color-darkPurple, 1),
+          rgba($color-lightPurple, 1),
+          rgba($color-darkPurple, 1)
+        );
+        display: flex;
+        justify-content: center;
+
+        a {
+          color: $color-white;
+          text-decoration: none;
+          cursor: pointer;
+          line-height: 30px;
+          margin: 0;
+          padding: 0;
+        }
+      }
+
+      .staffMatch {
+        padding-top: 20px;
+        right: 10px;
+        top: 100px;
+
+        .staffMatchTeam {
+          height: 25px;
+          left: 0;
+          position: absolute;
+          width: 95%;
+          margin-top: 1px;
+          box-sizing: border-box;
+          display: flex;
+          align-items: center;
+          cursor: pointer;
+          background: linear-gradient(
+            rgba($color-darkGreen, 0.6),
+            rgba($color-lightGreen, 0.6),
+            rgba($color-darkGreen, 0.6)
+          );
+
+          .number {
+            display: none;
+          }
+
+          img {
+            display: none;
+          }
+
+          .name {
+            padding-left: 10px;
+          }
+        }
+      }
+
+      .playerIn {
+        width: 70px;
+        height: 50px;
+        position: absolute;
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center;
+        color: $color-white;
+        font-size: 13px;
+        bottom: -15px;
+        box-sizing: border-box;
+        cursor: pointer;
+
+        img {
+          height: 90%;
+          width: 60%;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          position: absolute;
+          margin: auto 0;
+        }
+
+        .name {
+          position: absolute;
+          top: 100%;
+          width: 100%;
+          text-align: center;
+          font-weight: 500;
+          background-color: rgba($color-black, 0.3);
+          border-radius: 10px;
+        }
+
+        .number {
+          position: absolute;
+          text-align: center;
+          width: 100%;
+          top: 30%;
+          font-size: 20px;
+          font-weight: bold;
+        }
+
+        .capitan::after {
+          content: "C";
+          position: absolute;
+          background-color: $color-red;
+          height: 20px;
+          width: 20px;
+          font-size: 16;
+          line-height: 20px;
+          text-align: center;
+          bottom: 30px;
+          right: 20px;
+          border-radius: 50% 50%;
+        }
+      }
+    }
+
+    .composition {
+      width: 100%;
+      height: 40%;
+      background: linear-gradient(
+        rgba($color-darkOrange, 1),
+        rgba($color-lightOrange, 1),
+        rgba($color-darkOrange, 1)
+      );
+      display: flex;
+      flex-direction: column;
+
+      .headerPlayer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 30px;
+        color: $color-white;
+        font-weight: 900;
+        background: linear-gradient(#474747, #8a8a8a, #474747);
+      }
+
+      .players {
+        position: relative;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        justify-content: space-around;
+        background: linear-gradient(
+          rgba($color-darkOrange, 1),
+          rgba($color-lightOrange, 1),
+          rgba($color-darkOrange, 1)
+        );
+
+        .playerOut {
+          left: 0;
+          background: linear-gradient(
+            rgba($color-darkPurple, 1),
+            rgba($color-lightPurple, 1),
+            rgba($color-darkPurple, 1)
+          );
+          position: relative;
+          width: 48%;
+          margin-top: 2px;
+          box-sizing: border-box;
+          display: flex;
+          align-items: center;
+          cursor: pointer;
+          color: white;
+
+          & .capitan::after {
+            content: "C";
+            position: absolute;
+            background-color: $color-red;
+            height: 20px;
+            width: 20px;
+            font-size: 16;
+            line-height: 20px;
+            text-align: center;
+            bottom: 3px;
+            right: 3px;
+            border-radius: 50% 50%;
+          }
+
+          img {
+            display: none;
+          }
+
+          .number {
+            margin-right: 3px;
+            background: linear-gradient(
+              rgba($color-darkBlue, 1),
+              rgba($color-lightBlue, 1),
+              rgba($color-darkBlue, 1)
+            );
+            width: 25px;
+            height: 25px;
+            line-height: 25px;
+            text-align: center;
+            color: $color-black;
+            font-weight: 700;
+          }
+
+          & > .name {
+            padding-left: 10px;
+          }
+        }
+      }
+    }
+  }
+
+  .modal {
+    position: fixed;
+    z-index: 101;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba($color-black, 0.9);
+    -webkit-filter: blur(1px);
+    -moz-filter: blur(1px);
+    -o-filter: blur(1px);
+    -ms-filter: blur(1px);
+    filter: blur(1px);
+    visibility: hidden;
+
+    &.blur {
+      visibility: visible;
+    }
+  }
+
+  .loginContainer,
+  .registerContainer {
+    font-family: $font-family-condensed;
+    position: absolute;
+    z-index: 200;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: linear-gradient(
+      rgba($color-darkBlue, 1),
+      rgba($color-lightBlue, 1),
+      rgba($color-darkBlue, 1)
+    );
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    min-width: 200px;
+    color: $color-white;
+
+    &.noLogin,
+    &.noRegister {
+      display: none;
+    }
+
+    label {
+      margin-bottom: 5px;
+    }
+
+    input {
+      margin-bottom: 20px;
+      border: none;
+      border-bottom: 1px solid #b3b3b3;
+      background-color: transparent;
+      outline: none;
+    }
+
+    & > button {
+      border: none;
+      margin: 10px;
+      line-height: 25px;
+      font-family: $font-family-condensed;
+      font-weight: 600;
+      background-color: $color-lightBlue;
+      color: $color-white;
+      padding: 3px 10px;
+      cursor: pointer;
+    }
+
+    .loginButton {
+      background-color: $color-lightGreen;
+      color: $color-lightBlue;
+    }
+
+    .loginButton:hover,
+    .registerContainerButton:hover {
+      background-color: $color-lightPurple;
+      color: $color-white;
+      transition: all 0.3s;
+    }
+
+    .cancelButton:hover,
+    .cancelContainerButton:hover {
+      background-color: $color-black;
+      color: $color-white;
+      transition: all 0.3s;
+    }
+
+    .registerButton {
+      background-color: transparent;
+
+      &:hover {
+        color: $color-lightOrange;
+        transition: all 0.3s;
+        text-shadow: 1xp 11x #a3a3a3;
+      }
+    }
+  }
+
+  .newStaff {
+    position: absolute;
+    max-width: 500px;
+    height: 80%;
+    top: 0;
+    left: 0;
+    background: linear-gradient(
+      rgba($color-darkBlue, 1),
+      rgba($color-lightBlue, 1),
+      rgba($color-darkBlue, 1)
+    );
+    z-index: 200;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding-top: 20px;
+    overflow: hidden;
+    padding-bottom: 60px;
+    box-shadow: inset 0px 0px 0px 1px $color-white;
+
+    & > input {
+      margin-bottom: 50px;
+      padding: 5px 50px;
+      border: none;
+      color: #fff;
+    }
+
+    & > p {
+      position: absolute;
+      color: $color-lightOrange;
+      font-size: 14px;
+      top: 5px;
+    }
+
+    &.noNew {
+      display: none;
+    }
+
+    button {
+      border: none;
+      margin: 10px;
+      line-height: 25px;
+      font-family: $font-family-condensed;
+      font-weight: 600;
+      background-color: $color-lightBlue;
+      color: $color-white;
+      padding: 3px 15px;
+      cursor: pointer;
+    }
+
+    .imageContainer {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      align-items: flex-end;
+      margin-top: 10px;
+      background-color: rgba($color-black, 0.3);
+      margin: 10px;
+      padding: 5px 0;
+
+      .imageWrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        max-width: 90%;
+
+        #getCrest,
+        #getPlayer,
+        #getGoalKeeper,
+        #getSponsors {
+          display: none;
+        }
+
+        .crestBtn,
+        .playerBtn,
+        .goalKeeperBtn,
+        .sponsorsBtn {
+          border: none;
+          margin: 10px;
+          line-height: 20px;
+          font-family: $font-family-condensed;
+          font-weight: 400;
+          background-color: $color-lightBlue;
+          color: $color-white;
+          padding: 1px 10px;
+          cursor: pointer;
+
+          &:hover {
+            background-color: $color-darkPurple;
+            color: $color-white;
+            transition: all 0.3s;
+          }
+        }
+
+        #previewCrest,
+        #previewPlayer,
+        #previewGoalKeeper {
+          max-height: 70px;
+          max-width: 70px;
+        }
+
+        #previewSponsors {
+          max-height: 70px;
+          max-width: 90%;
+        }
+      }
+    }
+
+    .newPlayerHeader {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 20px;
+      color: $color-white;
+      text-shadow: 1px 1px $color-black;
+
+      .number {
+        display: inline-block;
+        width: 30px;
+        margin-right: 5px;
+        text-align: left;
+      }
+
+      .name {
+        display: inline-block;
+        width: 205px;
+      }
+
+      .gk {
+        height: 100%;
+        width: 20px;
+        text-align: left;
+      }
+
+      .getLink:hover {
+        width: 30px;
+      }
+    }
+
+    .newPersonBtnContainer {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+
+      .newPersonBtn {
+        position: absolute;
+        bottom: 10px;
+        left: 20px;
+        border: none;
+        margin: 10px;
+        line-height: 25px;
+        font-family: $font-family-condensed;
+        font-weight: 600;
+        background-color: $color-lightGreen;
+        color: $color-white;
+        padding: 3px 15px;
+        cursor: pointer;
+        font-size: 25px;
+
+        &:hover {
+          background-color: $color-darkPurple;
+          color: $color-white;
+          transition: all 0.3s;
+        }
+      }
+
+      .newStaffCancelBtn {
+        position: absolute;
+        bottom: 10px;
+        right: 100px;
+        border: none;
+        margin: 10px;
+        line-height: 25px;
+        font-family: $font-family-condensed;
+        font-weight: 600;
+        background-color: $color-lightBlue;
+        color: $color-white;
+        padding: 3px 15px;
+        cursor: pointer;
+
+        &:hover {
+          background-color: $color-black;
+          color: $color-white;
+          transition: all 0.3s;
+        }
+      }
+
+      .newStaffSaveBtn {
+        position: absolute;
+        bottom: 10px;
+        right: 20px;
+        border: none;
+        margin: 10px;
+        line-height: 25px;
+        font-family: $font-family-condensed;
+        font-weight: 600;
+        background-color: $color-lightBlue;
+        color: $color-white;
+        padding: 3px 15px;
+        cursor: pointer;
+
+        &:hover {
+          background-color: $color-darkPurple;
+          color: $color-white;
+          transition: all 0.3s;
+        }
+      }
+    }
+
+    .newPersonContainer {
+      width: 300px;
+      overflow-y: scroll;
+      bottom: 50px;
+
+      .newPerson {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 1px;
+
+        .playerNumber {
+          border: none;
+          width: 30px;
+          margin: 0;
+          outline: none;
+          margin-right: 3px;
+          line-height: 25px;
+          text-align: center;
+          background-color: transparent;
+          border-bottom: 1px solid $color-lightGreen;
+          color: $color-lightPurple;
+        }
+
+        .playerName {
+          border: none;
+          width: 200px;
+          margin: 0;
+          outline: none;
+          margin-right: 3px;
+          line-height: 25px;
+          padding-left: 5px;
+          background-color: transparent;
+          border-bottom: 1px solid $color-lightGreen;
+          color: $color-lightPurple;
+        }
+      }
+    }
+  }
+
+  .message {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: $color-red;
+    color: $color-white;
+    padding: 10px 20px;
+    border: 1px solid $color-white;
+  }
+
+  .registerError {
+    background-color: $color-white;
+    color: $color-red;
+    font-size: 12px;
+    text-align: center;
+  }
+
+  @media (min-width: 420px) {
+    .reserve,
+    .staffMatch {
+      width: 150px;
+
+      label {
+        line-height: 25px;
+        font-size: 12px;
+        top: -5px;
+      }
+    }
+  }
+
+  @media (min-width: 800px) {
+    .container {
+      flex-direction: row;
+      align-items: center;
+
+      .pitch {
+        width: 70%;
+        height: 100%;
+
+        .crest {
+          width: 100px;
+          height: 100px;
+          top: 4%;
+          left: 3%;
+        }
+
+        .reserve,
+        .staffMatch {
+          position: absolute;
+          top: 140px;
+          width: 180px;
+          min-height: 100px;
+          font-size: 16px;
+
+          label {
+            line-height: 25px;
+            font-size: 16px;
+            top: -5px;
+          }
+        }
+      }
+
+      .composition {
+        width: 30%;
+        height: 100%;
+        background: linear-gradient(
+          rgba($color-darkOrange, 1),
+          rgba($color-lightOrange, 1),
+          rgba($color-darkOrange, 1)
+        );
+
+        .headerPlayer {
+          z-index: 10;
+        }
+
+        .players {
+          position: absolute;
+          padding-top: 30px;
+          width: 30%;
+          height: 100%;
+          flex-direction: column;
+          align-items: center;
+          justify-content: flex-start;
+
+          .playerOut {
+            width: 95%;
+          }
+        }
+      }
+    }
+
+    .playerIn {
+      width: 90px;
+      height: 70px;
+      font-size: 15px;
+    }
+  }
+
+  @media (min-width: 1500px) {
+    .crest {
+      width: 150px;
+      height: 150px;
+      top: 4%;
+      left: 3%;
+    }
+
+    .reserve,
+    .staffMatch {
+      position: absolute;
+      top: 230px;
+      width: 250px;
+      min-height: 100px;
+      font-size: 16px;
+    }
+
+    .playerIn {
+      width: 90px;
+      height: 70px;
+      font-size: 15px;
+    }
+
+    .homeTeam,
+    .guestTeam {
+      font-size: 32px;
+      font-weight: 700;
+      background: transparent;
+      border: none;
+      font-family: $font-family-condensed;
+      width: 40%;
+    }
+
+    .matchDate,
+    .matchAddress {
+      font-size: 16px;
+      margin-top: 10px;
+    }
+  }
+
+  @media (min-width: 2000px) {
+    .crest {
+      width: 200px;
+      height: 200px;
+      top: 4%;
+      left: 3%;
+    }
+
+    .reserve,
+    .staffMatch {
+      top: 280px;
+      width: 350px;
+      min-height: 100px;
+      font-size: 20px;
+    }
+
+    .matchDate,
+    .matchAddress {
+      font-size: 20px;
+      margin-top: 20px;
+    }
+
+    .match {
+      margin-top: 20px;
+    }
+  }
+}

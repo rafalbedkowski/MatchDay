@@ -1,0 +1,84 @@
+{
+  "TeamName": "KP Warta Zawiercie",
+  "Herb": "media/herb.png",
+  "Tshirt": "media/TShirt.png",
+  "GoalKeeper": "media/gk.png",
+  "Sponsors": "media/sponsors.png",
+  "Persons": [
+    {
+      "Number": 1,
+      "Name": "Zawodnik 1",
+      "Goalkeeper": true
+    },
+    {
+      "Number": 2,
+      "Name": "Zawodnik 2",
+      "Goalkeeper": false
+    },
+    {
+      "Number": 3,
+      "Name": "Zawodnik 3",
+      "Goalkeeper": false
+    },
+    {
+      "Number": 4,
+      "Name": "Zawodnik 4",
+      "Goalkeeper": false
+    },
+    {
+      "Number": 5,
+      "Name": "Zawodnik 5",
+      "Goalkeeper": false
+    },
+    {
+      "Number": 6,
+      "Name": "Zawodnik 6",
+      "Goalkeeper": false
+    },
+    {
+      "Number": 7,
+      "Name": "Zawodnik 7",
+      "Goalkeeper": false
+    },
+    {
+      "Number": 8,
+      "Name": "Zawodnik 8",
+      "Goalkeeper": false
+    },
+    {
+      "Number": 9,
+      "Name": "Zawodnik 9",
+      "Goalkeeper": false
+    },
+    {
+      "Number": 10,
+      "Name": "Zawodnik 10",
+      "Goalkeeper": false
+    },
+    {
+      "Number": 11,
+      "Name": "Zawodnik 11",
+      "Goalkeeper": false
+    },
+    {
+      "Number": 12,
+      "Name": "Zawodnik 12",
+      "Goalkeeper": false
+    },
+    {
+      "Number": 13,
+      "Name": "Zawodnik 13",
+      "Goalkeeper": false
+    },
+    {
+      "Number": 14,
+      "Name": "Zawodnik 14",
+      "Goalkeeper": false
+    },
+    {
+      "Number": 15,
+      "Name": "Zawodnik 15",
+      "Goalkeeper": false
+    }
+  ]
+}
